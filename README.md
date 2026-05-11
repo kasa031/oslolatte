@@ -2,6 +2,22 @@
 
 Nettside for OsloLatte — React (Vite), TypeScript, Netlify.
 
+## Git og GitHub
+
+Prosjektet har **git lokalt** (`main`). Koble til GitHub slik:
+
+1. Opprett et **nytt repository** på [github.com/new](https://github.com/new) (uten README om du vil unngå merge-konflikt — eller behold og bruk «pull» først).
+2. I prosjektmappen:
+
+```bash
+git remote add origin https://github.com/DITTBRUKERNAVN/DITT-REPONAVN.git
+git push -u origin main
+```
+
+Første gang ber Windows om innlogging: **Git Credential Manager** åpner nettleser, eller bruk **Personal Access Token** som «passord» om du blir spurt.
+
+Etter push kjører **GitHub Actions** automatisk `npm ci`, `npm run lint` og `npm run build` (`.github/workflows/ci.yml`).
+
 ## Utvikling
 
 ```bash

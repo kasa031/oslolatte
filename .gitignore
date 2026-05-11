@@ -9,6 +9,7 @@ dist
 # Nedlasting/søppel fra ekstern nettside — ikke del av appen (stor mappe)
 Images/The Oslo Toile _ tapet_files/
 Images/The Oslo Toile _ tapet.html
+Images/The Oslo Toile _ tapet.png
 
 # Playwright
 /test-results/
