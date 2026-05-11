@@ -1,0 +1,16 @@
+node_modules
+dist
+*.local
+.DS_Store
+.env
+.env.*
+!.env.example
+
+# Nedlasting/søppel fra ekstern nettside — ikke del av appen (stor mappe)
+Images/The Oslo Toile _ tapet_files/
+Images/The Oslo Toile _ tapet.html
+
+# Playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/

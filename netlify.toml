@@ -1,0 +1,23 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[functions]
+  directory = "netlify/functions"
+
+# Lokal utvikling: Netlify Dev kjører Vite + serverless-funksjoner (Telegram) sammen
+[dev]
+  command = "npm run dev"
+  targetPort = 5173
+
+# API før SPA-fallback — ellers fanget av index.html
+[[redirects]]
+  from = "/api/order"
+  to = "/.netlify/functions/order"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

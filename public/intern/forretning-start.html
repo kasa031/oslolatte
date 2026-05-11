@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Intern: Oppstart virksomhet — OsloLatte</title>
+    <style>
+      :root {
+        --bg: #0f1419;
+        --panel: #1a222d;
+        --text: #e8edf4;
+        --muted: #9aacbd;
+        --accent: #c9a227;
+        --line: rgba(255, 255, 255, 0.08);
+        --link: #8ec5ff;
+        --font: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: var(--font);
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.65;
+        font-size: 1rem;
+      }
+
+      .ribbon {
+        background: linear-gradient(90deg, #3d2914, var(--accent));
+        color: #111;
+        text-align: center;
+        padding: 0.55rem 1rem;
+        font-weight: 700;
+        font-size: 0.85rem;
+        letter-spacing: 0.06em;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(240px, 280px) 1fr;
+        max-width: 1200px;
+        margin: 0 auto;
+        min-height: calc(100vh - 44px);
+      }
+
+      @media (max-width: 900px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+
+        aside {
+          position: relative;
+          border-right: none;
+          border-bottom: 1px solid var(--line);
+        }
+      }
+
+      aside {
+        position: sticky;
+        top: 0;
+        align-self: start;
+        max-height: 100vh;
+        overflow-y: auto;
+        padding: 1.25rem 1rem 2rem;
+        border-right: 1px solid var(--line);
+        background: var(--panel);
+      }
+
+      aside h2 {
+        margin: 0 0 0.75rem;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--muted);
+      }
+
+      .toc a {
+        display: block;
+        color: var(--link);
+        text-decoration: none;
+        padding: 0.35rem 0;
+        font-size: 0.9rem;
+        border-radius: 6px;
+      }
+
+      .toc a:hover {
+        text-decoration: underline;
+      }
+
+      .toc a:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+
+      .toc .toc-sub {
+        padding-left: 0.75rem;
+        font-size: 0.82rem;
+        color: var(--muted);
+      }
+
+      main {
+        padding: 2rem 1.5rem 3rem;
+        max-width: 52rem;
+      }
+
+      .doc-head {
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .doc-head h1 {
+        margin: 0 0 0.5rem;
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        line-height: 1.2;
+      }
+
+      .doc-head .meta {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .callout {
+        background: rgba(201, 162, 39, 0.12);
+        border-left: 4px solid var(--accent);
+        padding: 1rem 1.1rem;
+        margin: 1.5rem 0;
+        border-radius: 0 8px 8px 0;
+      }
+
+      .callout strong {
+        color: #fff;
+      }
+
+      article section {
+        margin-bottom: 2.25rem;
+        scroll-margin-top: 1rem;
+      }
+
+      article h2 {
+        margin: 0 0 0.75rem;
+        font-size: 1.25rem;
+        color: #fff;
+        padding-bottom: 0.35rem;
+        border-bottom: 1px solid var(--line);
+      }
+
+      article h3 {
+        margin: 1rem 0 0.5rem;
+        font-size: 1.05rem;
+        color: var(--accent);
+      }
+
+      article p {
+        margin: 0 0 0.85rem;
+      }
+
+      article ul,
+      article ol {
+        margin: 0 0 1rem;
+        padding-left: 1.35rem;
+      }
+
+      article li {
+        margin-bottom: 0.4rem;
+      }
+
+      article a {
+        color: var(--link);
+        word-break: break-word;
+      }
+
+      .footer-note {
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .back {
+        display: inline-block;
+        margin-top: 0.75rem;
+        font-size: 0.9rem;
+      }
+
+      @media print {
+        aside,
+        .ribbon {
+          display: none;
+        }
+
+        .layout {
+          grid-template-columns: 1fr;
+        }
+
+        body {
+          background: #fff;
+          color: #000;
+        }
+
+        article a {
+          color: #000;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ribbon">INTERN ARBEIDSDOKUMENT — IKKE FOR KUNDER</div>
+    <div class="layout">
+      <aside aria-label="Innholdsfortegnelse">
+        <h2>Innhold</h2>
+        <nav class="toc">
+          <a href="#topp">Topp og ansvar</a>
+          <a href="#oslolatte-kontakt">OsloLatte — kontakt & lenker</a>
+          <a href="#vipps-intern">Vipps — oppsett, kostnad, cafenavn</a>
+          <a href="#kap0">Viktig om dokumentet</a>
+          <a href="#kap1">1. Forretningsform og økonomi</a>
+          <a href="#kap2">2. Matlov og Mattilsynet</a>
+          <a href="#kap3">3. Bolig som lokale</a>
+          <a href="#kap4">4. Skjøteledning og el.</a>
+          <a href="#kap5">5. Brannlov og fellesareal</a>
+          <a href="#kap6">6. Oslo kommune</a>
+          <a href="#kap7">7. Naboer og sameie</a>
+          <a href="#kap8">8. Helgeåpning</a>
+          <a href="#kap9">9. Personvern</a>
+          <a href="#kap10">10. Navn og markedsføring</a>
+          <a href="#kap11">11. Forsikring</a>
+          <a href="#kap12">12. Handlingsplan</a>
+          <a href="#lenker">Nyttige nettsteder</a>
+        </nav>
+        <p class="toc-sub">
+          Live etter deploy: <code>/intern/forretning-start.html</code><br />
+          Lokalt (dev): <code>http://localhost:5173/intern/forretning-start.html</code>
+        </p>
+      </aside>
+      <main>
+        <article id="topp">
+          <header class="doc-head">
+            <h1>Intern sjekkliste for oppstart av virksomhet (mat og servering)</h1>
+            <p class="meta"><strong>OsloLatte / familiebedrift</strong> · Thereses gate</p>
+            <p class="meta">
+              Dokument for bruk i Word: lagres som .docx ved behov. Full tekst ligger også i
+              <code>intern/FORRETNING_START_SJEKKLISTE.md</code>.
+            </p>
+            <p class="meta">
+              Teksten er <strong>orientering</strong>, ikke juridisk eller regnskapsmessig rådgivning. Avklar alltid med
+              Mattilsynet, kommune, regnskapsfører og advokat der det trengs.
+            </p>
+            <a class="back" href="/">← Tilbake til OsloLatte-forsiden</a>
+            <p class="meta" style="margin-top: 1rem">
+              (Åpner du denne filen som <code>file://</code> på disk, virker ikke «Tilbake» — bruk nettleser med
+              <code>npm run dev</code> eller den publiserte URL-en.)
+            </p>
+          </header>
+
+          <section id="oslolatte-kontakt">
+            <h2>OsloLatte — kontakt, telefon og hurtiglenker</h2>
+            <p>
+              Opplysningene speiler <strong>kilden i prosjektet</strong> (<code>src/config/contact.ts</code>). Ved endring av
+              e-post eller telefon: oppdater der og evt. denne HTML-en.
+            </p>
+
+            <h3>Direktekontakt (kunder og dere selv)</h3>
+            <ul>
+              <li>
+                <strong>E-post (bestilling og kontakt):</strong>
+                <a href="mailto:ms.tery@icloud.com">ms.tery@icloud.com</a>
+              </li>
+              <li>
+                <strong>Telefon:</strong> <a href="tel:+4741352444">+47 413 52 444</a> (<code>tel:+4741352444</code>)
+              </li>
+              <li>
+                <strong>WhatsApp (valgfritt på nettsiden):</strong> Ikke slått på i kode ennå (
+                <code>CONTACT_WHATSAPP_WA_ME</code> er tom). Internt kan dere likevel bruke:
+                <a href="https://wa.me/4741352444" target="_blank" rel="noopener">https://wa.me/4741352444</a>
+                — aktiver samme nummer i <code>contact.ts</code> for å vise linje på <code>/side/kontakt</code>.
+              </li>
+              <li><strong>Sted:</strong> Thereses gate (øverst i gaten), Oslo · familiebedrift · Bolteløkka-området</li>
+            </ul>
+
+            <h3>Nettside — alle skjemalenker og faner</h3>
+            <p>
+              Bruk <strong>rot-URL</strong> dere har på Netlify / eget domene (eksempel:
+              <code>https://DERES-side.netlify.app</code>). Under er <strong>relative stier</strong> — lim inn etter domenet.
+            </p>
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.92rem; margin: 0.75rem 0 1rem">
+              <thead>
+                <tr style="border-bottom: 1px solid var(--line); text-align: left">
+                  <th style="padding: 0.4rem 0.5rem 0.4rem 0">Side</th>
+                  <th style="padding: 0.4rem 0">Sti / anker</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--line)">
+                  <td style="padding: 0.45rem 0.5rem 0.45rem 0">Forside med bestillingsskjema</td>
+                  <td style="padding: 0.45rem 0"><a href="/">/</a> · hopplenk til skjema: <code>/#bestill</code></td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line)">
+                  <td style="padding: 0.45rem 0.5rem 0.45rem 0">Bestilling (egen side under «faner»)</td>
+                  <td style="padding: 0.45rem 0"><a href="/side/bestill">/side/bestill</a></td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line)">
+                  <td style="padding: 0.45rem 0.5rem 0.45rem 0">Meny (vinter/sommer-flipp)</td>
+                  <td style="padding: 0.45rem 0"><a href="/side/meny">/side/meny</a> · allergener: <code>/side/meny#allergener</code></td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line)">
+                  <td style="padding: 0.45rem 0.5rem 0.45rem 0">Åpningstider / kalender</td>
+                  <td style="padding: 0.45rem 0"><a href="/side/kalender">/side/kalender</a></td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line)">
+                  <td style="padding: 0.45rem 0.5rem 0.45rem 0">Kontakt + personvern</td>
+                  <td style="padding: 0.45rem 0">
+                    <a href="/side/kontakt">/side/kontakt</a> · personvern: <code>/side/kontakt#personvern</code>
+                  </td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line)">
+                  <td style="padding: 0.45rem 0.5rem 0.45rem 0">Om oss</td>
+                  <td style="padding: 0.45rem 0"><a href="/side/om-oss">/side/om-oss</a></td>
+                </tr>
+                <tr>
+                  <td style="padding: 0.45rem 0.5rem 0.45rem 0">Dette intern dokumentet</td>
+                  <td style="padding: 0.45rem 0">
+                    <a href="/intern/forretning-start.html">/intern/forretning-start.html</a>
+                    <span style="color: var(--muted)">(noindex — ikke markedsført til kunder)</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3>Bestilling — hvordan det virker</h3>
+            <ul>
+              <li>
+                <strong>Uten server (standard lokalt):</strong> «Send bestilling» åpner e-postklient med
+                <strong>mailto</strong> til <code>ms.tery@icloud.com</code> og forhåndsutfylt tekst.
+              </li>
+              <li>
+                <strong>Med Telegram på Netlify:</strong> sett miljøvariabel <code>VITE_ORDER_API_URL=/api/order</code> og
+                Telegram-token i Netlify (se prosjektets <code>.env.example</code> og README). Da sender skjemaet POST til API i
+                stedet for mailto.
+              </li>
+              <li><strong>Vipps:</strong> konfigureres i <code>src/config/vipps.ts</code> når dere har lenke/mottaker.</li>
+            </ul>
+
+            <div class="callout" style="margin-top: 1rem">
+              <strong>Kopierklar basis-URL</strong> (fyll inn når dere har den):
+              <p style="margin: 0.5rem 0 0">
+                <code style="user-select: all">https://________________</code>
+                &nbsp;+ stier fra tabellen over (f.eks. <code>…/side/bestill</code>).
+              </p>
+            </div>
+          </section>
+
+          <section id="vipps-intern">
+            <h2>Vipps — oppsett, kostnad og cafenavn vs. personlig konto</h2>
+            <p>
+              Dette er en <strong>intern arbeidsliste</strong> basert på offentlig informasjon fra Vipps MobilePay og deres
+              nettsidekode (<code>src/config/vipps.ts</code>). Gebyrsatser endres — sjekk alltid
+              <a href="https://vippsmobilepay.com/nb-NO/pricing" target="_blank" rel="noopener">gjeldende prisliste</a>. Ved tvil:
+              kontakt Vipps og regnskapsfører.
+            </p>
+
+            <h3>Hva vi bruker på OsloLatte-nettsiden</h3>
+            <ul>
+              <li>
+                <strong>Betalingslenke</strong> (anbefalt): du oppretter en lenke i
+                <a href="https://portal.vippsmobilepay.com" target="_blank" rel="noopener">Vipps-portalen</a> og limer den inn i
+                <code>VIPPS_PAYMENT_LINK</code> i <code>src/config/vipps.ts</code>. Kunden trykker «Betal med Vipps» og fullfører i
+                app eller nettleser.
+              </li>
+              <li>
+                <strong>Reserve — manuelt nummer:</strong> <code>VIPPS_RECIPIENT_MOBILE</code> kan vise norsk mobil slik at kunden
+                kan søke opp dere i Vipps når dere ikke bruker lenke ennå (samme nummer som i portalen / avtalen).
+              </li>
+              <li>
+                Dokumentasjon om betalingslenker:
+                <a href="https://vippsmobilepay.com/no/online/payment-links" target="_blank" rel="noopener"
+                  >vippsmobilepay.com — betalingslenker</a>.
+              </li>
+            </ul>
+
+            <h3>Koster det penger?</h3>
+            <p>
+              For <strong>mottaker (dere som tar betalt)</strong> er det normalt <strong>transaksjonsgebyr</strong> på det Vipps
+              utbetaler til konto — ikke en egen regning til kunden for «å trykke Vipps». Typisk betaler ikke privatpersoner ekstra
+              for å betale til godkjent bedrift i butikk (se Vipps’ hjelpesider om dette).
+            </p>
+            <p>
+              På Vipps MobilePay’ prisside (standard bedriftsnivå, verifiser selv) er det blant annet oppgitt:
+            </p>
+            <ul>
+              <li>
+                <strong>Betalingslenker</strong> (nett): <strong>2,49&nbsp;% + 1&nbsp;kr</strong> per transaksjon.
+              </li>
+              <li>
+                <strong>Vippsnummer</strong> (bl.a. fysisk / «valgfritt beløp»): <strong>1,75&nbsp;%</strong> per transaksjon.
+              </li>
+              <li>
+                <strong>Integrert betaling</strong> (API): <strong>2,99&nbsp;% + 1&nbsp;kr</strong> per transaksjon (aktuelt hvis
+                dere senere integrerer dypere enn ren lenke).
+              </li>
+            </ul>
+            <p class="meta" style="color: var(--muted); font-size: 0.92rem">
+              Tallene over er hentet fra prissiden og kan endres — bruk lenken til «gjeldende prisliste» ved budsjettering.
+            </p>
+
+            <h3>Gruppe, cafenavn og «min Vipps»</h3>
+            <p>
+              <strong>Privat Vipps-konto</strong> er ment personlig. Når dere <strong>selger varer og tjenester</strong> (kaffe,
+              kakao, utlevering mot betaling), forventer Vipps normalt at dere er registrert som
+              <strong>Vipps for bedrift</strong> (eller relevant produkt for lag/forening der det passer), med avtale knyttet til
+              virksomhet/org.nr. eller godkjent løsning — ikke «bare» privat Vipps til næringsinntekter. Konkret krav avhenger av
+              avtale og registrering; avklar med Vipps om dere er ENK, familiebedrift eller forening.
+            </p>
+            <p>
+              <strong>Cafenavn som kunden ser</strong> (f.eks. «OsloLatte») styres av hva som er registrert i
+              <strong>Vipps Bedrift / portalen</strong> — ikke av at dere privat eier telefonen. Dere kan ha
+              <strong>organisasjonsnavn eller profilnavn</strong> som vises til betaler når avtalen og produktet er satt opp riktig.
+              Kontoen utbetales til den bankkontoen dere knytter til avtalen (personlig eller bedriftskonto etter regnskapsregler —
+              dette er et tema for regnskapsfører, ikke dette dokumentet).
+            </p>
+            <p>
+              <strong>Lag og foreninger:</strong> Vipps har egne vilkår for
+              <a href="https://vipps.no/personvern-og-vilkar/vilkar-bedrift_121/" target="_blank" rel="noopener"
+                >bedrifter, lag og foreninger</a>
+              — relevant om dere organisatorisk ikke er «klassisk» AS.
+            </p>
+
+            <h3>Praktisk rekkefølge (anbefalt)</h3>
+            <ol>
+              <li>Ha avklart virksomhetsform og behov for registrering (Brønnøysund, MVA, Mattilsyn der aktuelt).</li>
+              <li>Opprett / logg inn på <a href="https://portal.vippsmobilepay.com" target="_blank" rel="noopener">portal.vippsmobilepay.com</a> med riktig bedrifts-/organisasjonsoppsett.</li>
+              <li>Opprett <strong>betalingslenke</strong> for typisk bruk (eller bruk Vippsnummer-produktet om dere kun tar imot i fysisk salg).</li>
+              <li>Lim inn lenken i koden (<code>VIPPS_PAYMENT_LINK</code>), eventuelt mobil i <code>VIPPS_RECIPIENT_MOBILE</code>, og deploy.</li>
+              <li>Test med lite beløp før dere tar imot kunder på nett.</li>
+            </ol>
+
+            <div class="callout">
+              <strong>Kort oppsummert</strong>
+              <ul style="margin: 0.6rem 0 0">
+                <li>Ja — som regel betaler <strong>dere</strong> gebyr av omsetningen gjennom Vipps’ satser, ikke kunden som et ekstra «gebyr per trykk».</li>
+                <li>Cafenavn og «hvem pengene går til» løses med <strong>riktig bedrifts-/lag-registrering i Vipps</strong>, ikke med privat Vipps alene.</li>
+                <li>Hold dere oppdatert på <a href="https://vippsmobilepay.com/nb-NO/pricing" target="_blank" rel="noopener">vippsmobilepay.com/pricing</a>.</li>
+              </ul>
+            </div>
+          </section>
+
+          <div class="callout" id="kap0">
+            <strong>Viktig om det intern dokumentet ikke inneholder</strong>
+            <ul style="margin: 0.75rem 0 0">
+              <li>Hemmelige ingredienser eller interne oppskrifter.</li>
+              <li>Konkrete påminnelser om allergener utover det dere offentlig har valgt å kommunisere.</li>
+            </ul>
+          </div>
+
+          <section id="kap1">
+            <h2>1. Forretningsform og økonomi</h2>
+            <ul>
+              <li>
+                Velg struktur: enkeltpersonforetak (ENK), aksjeselskap (AS), eller annet. Vurder ansvar, skatt og papirarbeid.
+              </li>
+              <li>Registrer virksomhet i Foretaksregisteret når krav er oppfylt (Brønnøysund).</li>
+              <li>
+                Skatteetaten: når dere må registrere i Mva-registeret (omsetningsgrense og regler for mat/næringsmidler).
+              </li>
+              <li>Separat bankkonto for omsetning er praktisk og ofte nødvendig.</li>
+              <li>Forsikring: ansvarsforsikring for næringsvirksomhet (vurder om innbo dekker næringsdel).</li>
+            </ul>
+          </section>
+
+          <section id="kap2">
+            <h2>2. Matlov og Mattilsynet (hovedlinje)</h2>
+            <p>
+              Når dere produserer og selger mat eller drikke til forbruker mot vederlag, faller dere normalt inn under krav om
+              registrert næringsmiddelvirksomhet og myndighetskrav til lokaler, renhold, sporbarhet og merking.
+            </p>
+            <h3>Gjør dette tidlig</h3>
+            <ul>
+              <li>Les Mattilsynets «Startpakke for nye matbedrifter» på mattilsynet.no.</li>
+              <li>
+                Registrer virksomhet via Mattilsynets skjematjeneste («Ny matbedrift» / registrering av næringsmiddelvirksomhet).
+                Start på mattilsynet.no under mat og drikke.
+              </li>
+              <li>
+                Internkontroll: alle matbedrifter skal ha system for mattrygghet (internkontrollforskriften). Innhold må tilpasses
+                dere – rutiner for mottak, temperatur, renhold, allergener, tilbakekalling.
+              </li>
+              <li>
+                Merking og allergener: kjenn EU/allergenkrav for ferdig drikke dere selger (listen over allergener som skal oppgis
+                til kunden der det er relevant).
+              </li>
+              <li>
+                Temperatur og hygieniske grenser: dere må kunne dokumentere trygg tilberedning og oppbevaring for deres produkt.
+              </li>
+            </ul>
+            <h3>Ta kontakt med Mattilsynet</h3>
+            <p>Veiledning som passer deres situasjon:</p>
+            <ul>
+              <li>Telefon svartjeneste og kontaktinfo står på mattilsynet.no.</li>
+              <li>Spør konkret om salg fra bolig (første etasje), vindu/portrom, og helgeåpning.</li>
+            </ul>
+          </section>
+
+          <section id="kap3">
+            <h2>3. Bolig som lokale – vindu og portrom (deres plan)</h2>
+            <p>
+              Dere bor i første etasje med kjøkken mot Thereses gate og vurderer servering fra vindu eller portrom, eventuelt med
+              skjøteledning.
+            </p>
+            <h3>Avklar skriftlig eller i møte med Mattilsynet</h3>
+            <ul>
+              <li>
+                Om kjøkken og utleveringssted er godkjenningspliktige slik dere tenker driften (renhold, tilgang til vask,
+                beskyttelse mot smitte, skille mellom privat og næringsdel om aktuelt).
+              </li>
+              <li>Om utlevering kun gjennom vindu/port oppfyller krav til trygg mathåndtering og sporbarhet.</li>
+            </ul>
+            <h3>Tenk praktisk og dokumenterbart</h3>
+            <ul>
+              <li>Håndvask og renhold når dere berører kopper og utstyr i dialog med kunden.</li>
+              <li>Beskyttelse mot støv og smitte fra gate (dekk/glass/lokk der det er relevant).</li>
+              <li>Avfall og renhold av område ut mot gate.</li>
+            </ul>
+          </section>
+
+          <section id="kap4">
+            <h2>4. Skjøteledning og elektrisk trygghet</h2>
+            <ul>
+              <li>
+                Skjøteledning ut til gate/portrom øker risiko for tripping, fukt og overbelastning. Minimer lengde, bruk jordet
+                utstyr beregnet på yrkesbruk der mulig.
+              </li>
+              <li>
+                Elektrisk anlegg i bolig er ikke nødvendigvis dimensjonert for kontinuerlig kommersielt apparat (kjøl, varmehold).
+                Vurder elektriker ved fast installasjon eller hyppig belastning.
+              </li>
+              <li>Brannvern: ikke blokker rømningsveier i portrom/trapperom; kjennskap til borettslag/sameies regler.</li>
+            </ul>
+          </section>
+
+          <section id="kap5">
+            <h2>5. Brannlov og portrom / fellesareal</h2>
+            <ul>
+              <li>Felles trapperom og portrom reguleres ofte av borettslag/sameie og branninstruks.</li>
+              <li>
+                Kommersiell aktivitet som samler folk kan utløse krav eller klager om rømningsveier og merking. Avklar med styret
+                om dere kan bruke portrom til kortvarig servering/kø.
+              </li>
+            </ul>
+          </section>
+
+          <section id="kap6">
+            <h2>6. Oslo kommune og eventuelle lokale lovkrav</h2>
+            <ul>
+              <li>
+                Kommunen kan ha regler for uteservering, gatehandel eller aktivitet som påvirker offentlig rom (avhengig av
+                hvordan dere praktisk selger). Sjekk oslo.kommune.no eller virksomhetsveileder for oppstart.
+              </li>
+              <li>
+                Har dere kun intern handel fra vindu uten folk på fortau i organisert form, vil avklaring likevel være klokt for
+                å unngå konflikt med naboer og park og vei.
+              </li>
+            </ul>
+          </section>
+
+          <section id="kap7">
+            <h2>7. Naboer, borettslag og sameie</h2>
+            <ul>
+              <li>Les husordensregler og vedtekter. Mange steder kreves skriftlig tillatelse for næringsvirksomhet i bolig.</li>
+              <li>Varsle styret om plan (lukt, støy helgeåpning, kø ved inngang). Få avklaring for bruk av portrom og skjøteledning.</li>
+            </ul>
+          </section>
+
+          <section id="kap8">
+            <h2>8. Helgeåpning som hovedmønster</h2>
+            <ul>
+              <li>
+                Internt: lag en fast liste over hvem som har ansvar for mattrygghet, åpning/lukking, og oppdatering av
+                nettside/kalender.
+              </li>
+              <li>Skriv rutiner for oppbevaring av rester, vask av utstyr og temperaturkontroll på det dere selger.</li>
+            </ul>
+          </section>
+
+          <section id="kap9">
+            <h2>9. Personvern og bestillinger på nett</h2>
+            <ul>
+              <li>
+                Har dere bestilling med navn, telefon og allergiinformasjon, gjelder personopplysningsloven. Lag en enkel intern
+                rutine: lagringstid, sletting, og hvem som har tilgang.
+              </li>
+              <li>
+                På OsloLatte-nettsiden ligger kort tekst om behandling og informasjonskapsler under
+                <a href="/side/kontakt#personvern">Kontakt → Personvern</a> (<code>/side/kontakt#personvern</code>).
+              </li>
+              <li>Behov for utvidet personvernerklæring vurderes ut fra hvordan dere behandler data utover skjema og språkvalg.</li>
+            </ul>
+          </section>
+
+          <section id="kap10">
+            <h2>10. For markedsføring og navn</h2>
+            <ul>
+              <li>
+                Kontroller at firmanavn og varemerke ikke kolliderer med andre (Patentstyret / navnesøk i Foretaksregisteret).
+              </li>
+            </ul>
+          </section>
+
+          <section id="kap11">
+            <h2>11. Forsikring og ansvar</h2>
+            <ul>
+              <li>Vurder produktansvar og ansvar ved sykdom hvis noen blir dårlig. Diskuter med forsikringsmegler eller forsikringsselskap.</li>
+            </ul>
+          </section>
+
+          <section id="kap12">
+            <h2>12. Kort rekkefølge for dere (handlingsplan)</h2>
+            <ol>
+              <li>Avklar med styret i borettslaget/sameiet om boligkjøkken + vindu/portrom er akseptabelt i deres vedtekter.</li>
+              <li>
+                Ring eller skriv Mattilsynet og beskriv: helgeåpning, salg av varm og kald drikke fra bolig, utlevering
+                vindu/portrom.
+              </li>
+              <li>Start registrering av næringsmiddelvirksomhet når dere har avklart lokasjon og omfang med Mattilsynet.</li>
+              <li>Sett opp internkontroll (sjekklister, temperaturlogg om nødvendig, renhold).</li>
+              <li>Avklar skatt/Mva og foretaksform med regnskapsfører eller Skatteetaten.</li>
+              <li>Vurder kommunal kontakt i Oslo hvis dere treffer fortau/kø ut mot gate.</li>
+              <li>Elektriker ved behov for last på skjøteledning eller fast utstyr.</li>
+            </ol>
+          </section>
+
+          <section id="lenker">
+            <h2>Nyttige nettsteder (kopier manuelt til nettleser)</h2>
+            <p><strong>Mattilsynet – startpakke og mat og drikke:</strong></p>
+            <p>
+              <a href="https://www.mattilsynet.no/mat-og-drikke/startpakke-for-nye-matbedrifter" target="_blank" rel="noopener">
+                https://www.mattilsynet.no/mat-og-drikke/startpakke-for-nye-matbedrifter
+              </a>
+            </p>
+            <p><strong>Mattilsynet – skjema og registrering</strong> (søk etter «Ny matbedrift» på mattilsynet.no hvis lenken endres):</p>
+            <p>
+              <a href="https://www.mattilsynet.no/" target="_blank" rel="noopener">https://www.mattilsynet.no/</a>
+            </p>
+            <p><strong>Brønnøysundregistrene – foretak:</strong></p>
+            <p><a href="https://www.brreg.no/" target="_blank" rel="noopener">https://www.brreg.no/</a></p>
+            <p><strong>Skatteetaten – næringsvirksomhet:</strong></p>
+            <p><a href="https://www.skatteetaten.no/" target="_blank" rel="noopener">https://www.skatteetaten.no/</a></p>
+            <p><strong>Oslo kommune – næringsliv og tillatelser</strong> (søk fra forsiden):</p>
+            <p><a href="https://www.oslo.kommune.no/" target="_blank" rel="noopener">https://www.oslo.kommune.no/</a></p>
+          </section>
+
+          <p class="footer-note">
+            Slutt på dokument · OsloLatte intern · kontaktinfo og lenker i avsnittet «OsloLatte — kontakt og nettside» · sist oppdatert
+            ved synk med <code>contact.ts</code>
+          </p>
+        </article>
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+:root {
+  --ink: #1a1528;
+  --cream: #faf6f0;
+  --warm: #c45c26;
+  --deep-blue: #2d4a6f;
+  --frost: #e8f1fb;
+  --accent: #d4a574;
+  /* Bolteløkka-palett (byfarger) */
+  --bolt-cream: #f7f1e3;
+  --bolt-beige: #e5d3b3;
+  --bolt-stone: #d9d9d9;
+  --bolt-tan: #b08d6f;
+  --bolt-brown: #4a3c39;
+  --bolt-terracotta: #b26b5d;
+  --bolt-sage: #829e85;
+  --bolt-pine: #2e5339;
+  --bolt-mustard: #e3b448;
+  --bolt-sand: #f2d091;
+  --bolt-mist: #c5d3e0;
+  /* Om oss-boks: kjølig grå-stein (erstatter varm beige i panelet) */
+  --bolt-omoss-surface: #d8dad3;
+  --bolt-omoss-surface-soft: #f2f0eb;
+  --bolt-omoss-surface-accent: #b0bcbc;
+  /* Flat meny-panel (sage, ingen gradient) */
+  --bolt-menu-panel: #768f84;
+  /* Nesten svart med svak rødbrun undertone («svart blod») */
+  --ink-blood: #1a0707;
+  /* Kalender-fanen: venstre panel — varm støvet rose / terrakotta (tekst: sort) */
+  --bolt-kalender-maroon: #d2b4a3;
+  /* Kalender-høyre: kjølig lys blågrå (kalenderkropp) */
+  --bolt-kalender-peach: #e9eef5;
+  --bolt-kalender-strip-left: #f5e9d3;
+  --bolt-kalender-strip-right: #b8c5d4;
+  /* Kontakt-fanen: begge felt — samme varme gulfarge */
+  --bolt-contact-gulfarge: #f2d299;
+  --bolt-contact-top: var(--bolt-contact-gulfarge);
+  --bolt-contact-privacy: var(--bolt-contact-gulfarge);
+  /* Bestilling (forside + /side/bestill): varm panelbakgrunn */
+  --bolt-bestill-panel: #f5eae6;
+  --bolt-bestill-accent: #e1d19c;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: 4.75rem;
+  background-color: var(--cream);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--cream);
+  /* Svak overlay slik at lyse linjer i tapetet faktisk synes */
+  background-image: linear-gradient(
+      rgba(250, 246, 240, 0.34) 0%,
+      rgba(250, 246, 240, 0.4) 45%,
+      rgba(232, 241, 251, 0.36) 100%
+    ),
+    url('/Images/oslo-tapet.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    background-attachment: scroll;
+  }
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  color: var(--deep-blue);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}

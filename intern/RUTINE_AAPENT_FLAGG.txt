@@ -1,0 +1,13 @@
+RUTINE: FLAGG I VINDU OG NETTSIDE (OSLOLATTE)
+Intern fil for familie - ikke for publikum.
+
+NAR DERE APNER FOR HELGEN ELLER EKSTRADAG
+1) Heis fysisk flagg i vinduet slik kunder ser det fra Thereses gate.
+2) Oppdater kalenderen i filen src/data/opening.ts - legg inn aktuelle datoer som "open" eller "closed".
+3) Valgfritt: sett flagOpenNowOverride til true i samme fil hvis dere vil vise det gronne banneret pa forsiden (ma bygges/deployes pa nytt, eller kjores lokalt hvis dere bare tester).
+4) Nar dere stenger: ta ned flagget, sett flagOpenNowOverride til false ved behov, oppdater kalender for neste helg.
+
+MERKNAD OM DEPLOY
+Nettsiden viser bare endringer etter at dere har lastet opp ny build til hosting, eller hvis dere bruker et system som oppdaterer seg automatisk fra Git. Avtal i familien hvem som trykker "deploy".
+
+SLUTT
