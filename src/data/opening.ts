@@ -9,7 +9,7 @@
  */
 export type DayStatus = 'open' | 'closed' | 'special';
 
-/** YYYY-MM-DD → status. Manglende dato betyr «ikke markert» (vises nøytralt). */
+/** YYYY-MM-DD → status. Uten `preLaunch`: manglende dato = nøytral celle. Med `preLaunch`: manglende dato = stengt. */
 export const openingSchedule: Record<string, DayStatus> = {
   // Eksempel helg:
   // '2026-05-17': 'open',
@@ -19,6 +19,14 @@ export const openingSchedule: Record<string, DayStatus> = {
 
 /**
  * Ekstra synlighet på forsiden når dere har åpent nå (grønt banner).
- * Se også intern/RUTINE_AAPENT_FLAGG.txt for arbeidsflyt med fysisk flagg og deploy.
  */
 export const flagOpenNowOverride = false;
+
+/**
+ * Pre-lansering: alle kalenderdager uten eksplisitt rad i `openingSchedule` vises som stengt;
+ * forsiden og undersider viser varsel; bestillingsskjemaet er stengt.
+ * Sett til `false` når dere åpner og tar imot bestilling.
+ *
+ * Playwright (order-mock): bruk `?e2eBypassPrelaunch=1` på URL slik at skjema fortsatt kan testes.
+ */
+export const preLaunch = true;

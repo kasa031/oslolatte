@@ -4,6 +4,8 @@
  *
  * Dokumentasjon om betalingslenker:
  * https://vippsmobilepay.com/no/online/payment-links
+ *
+ * Når lenken er opprettet: lim inn hele https-…-adressen i VIPPS_PAYMENT_LINK nedenfor og deploy.
  */
 
 /** Sett til false for å skjule hele Vipps-blokken på nettsiden. */

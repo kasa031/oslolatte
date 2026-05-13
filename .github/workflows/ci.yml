@@ -16,5 +16,23 @@ jobs:
           node-version: '22'
           cache: 'npm'
       - run: npm ci
+      - name: Ingen sporet .env-filer (unntatt .env.example)
+        run: npm run git:push-check
+      - name: npm audit (informativ, blokkerer ikke)
+        run: npm audit --audit-level=high
+        continue-on-error: true
+      - run: npm run format:check
       - run: npm run lint
       - run: npm run build
+      - uses: browser-actions/setup-chrome@v1
+        id: setup-chrome
+      - name: Lighthouse CI (HTML-rapport som artefakt)
+        run: npx --yes @lhci/cli@0.14.0 autorun --config=./lighthouserc.cjs
+        env:
+          CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
+      - name: Install Playwright (Chromium + WebKit)
+        run: npx playwright install --with-deps chromium webkit
+      - name: E2E-tester
+        run: npm run test:e2e
+        env:
+          PLAYWRIGHT_SKIP_WEB_BUILD: '1'

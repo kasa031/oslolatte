@@ -2,6 +2,18 @@
   command = "npm run build"
   publish = "dist"
 
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    # Tving HTTPS i nettleseren i minst ett år (uten preload — preload krever egen søknad hos Google)
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    # JSON-LD i index.html krever 'unsafe-inline' for script. Eventuelle lokale sider under /intern/ (gitignored) kan ha innebygd CSS.
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https://*.ingest.sentry.io https://*.ingest.de.sentry.io; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+
 [functions]
   directory = "netlify/functions"
 

@@ -1,0 +1,122 @@
+/* ——— 404 ——— */
+.page--not-found {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.not-found-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.25rem 3rem;
+}
+
+.not-found-main__inner {
+  max-width: 32rem;
+  text-align: center;
+}
+
+.not-found-main__code {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-display, 'Fraunces Variable', Georgia, serif);
+  font-size: clamp(2.5rem, 8vw, 3.5rem);
+  font-weight: 700;
+  color: rgba(45, 74, 111, 0.35);
+  letter-spacing: 0.04em;
+}
+
+.not-found-main__title {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.35rem, 4vw, 1.65rem);
+  font-weight: 700;
+  color: var(--ink, #1a1a1a);
+}
+
+.not-found-main__lead {
+  margin: 0 0 1.25rem;
+  color: #444;
+  line-height: 1.55;
+}
+
+.not-found-main__links {
+  margin: 0;
+  font-size: 0.98rem;
+}
+
+.not-found-main__links a {
+  color: var(--deep-blue, #2d4a6f);
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+
+.section--not-found-panel {
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
+}
+
+.not-found-panel__code {
+  margin: 0 0 0.25rem;
+  font-size: 2rem;
+  font-weight: 700;
+  color: rgba(45, 74, 111, 0.35);
+}
+
+.not-found-panel__links {
+  margin: 1rem 0 0;
+}
+
+.not-found-panel__links a {
+  color: var(--deep-blue, #2d4a6f);
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+
+/* React error boundary (AppErrorBoundary) */
+.error-boundary {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.25rem 3rem;
+  background: rgba(250, 246, 240, 0.55);
+}
+
+.error-boundary__inner {
+  max-width: 28rem;
+  text-align: center;
+}
+
+.error-boundary__title {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.25rem, 3.5vw, 1.55rem);
+  font-weight: 700;
+  color: var(--ink, #1a1a1a);
+}
+
+.error-boundary__body {
+  margin: 0 0 1.35rem;
+  line-height: 1.55;
+  color: #444;
+}
+
+.error-boundary__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.error-boundary__tech {
+  margin: 1.5rem 0 0;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  overflow-x: auto;
+  border-radius: 10px;
+  background: rgba(26, 21, 40, 0.06);
+  border: 1px solid rgba(45, 74, 111, 0.12);
+  color: #333;
+}

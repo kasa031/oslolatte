@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import type { DayStatus } from '../data/opening';
-import { openingSchedule } from '../data/opening';
-import { useLanguage } from '../i18n/LanguageContext';
+import { openingSchedule, preLaunch } from '../data/opening';
+import { useLanguage } from '../i18n/useLanguage';
 
 function pad(n: number) {
   return n < 10 ? `0${n}` : `${n}`;
@@ -35,7 +35,9 @@ export function OpeningCalendar() {
     for (let i = 0; i < startWeekday; i++) cells.push(null);
     for (let d = 1; d <= daysInMonth; d++) {
       const key = `${year}-${pad(month + 1)}-${pad(d)}`;
-      cells.push({ day: d, key, status: openingSchedule[key] });
+      const explicit = openingSchedule[key];
+      const status = explicit ?? (preLaunch ? ('closed' as const) : undefined);
+      cells.push({ day: d, key, status });
     }
     return cells;
   }, [year, month]);
@@ -68,11 +70,21 @@ export function OpeningCalendar() {
   return (
     <div className="calendar">
       <div className="calendar__toolbar">
-        <button type="button" className="calendar__btn" onClick={prev} aria-label={t('calendar.prev')}>
+        <button
+          type="button"
+          className="calendar__btn"
+          onClick={prev}
+          aria-label={t('calendar.prev')}
+        >
           ‹
         </button>
         <h3 className="calendar__title">{monthName}</h3>
-        <button type="button" className="calendar__btn" onClick={next} aria-label={t('calendar.next')}>
+        <button
+          type="button"
+          className="calendar__btn"
+          onClick={next}
+          aria-label={t('calendar.next')}
+        >
           ›
         </button>
       </div>
@@ -109,7 +121,7 @@ export function OpeningCalendar() {
           <span className="calendar__dot calendar__dot--special" /> {t('calendar.legendSpecial')}
         </li>
       </ul>
-      <p className="calendar__hint">{t('calendar.hint')}</p>
+      <p className="calendar__hint">{t(preLaunch ? 'calendar.hintPreLaunch' : 'calendar.hint')}</p>
     </div>
   );
 }

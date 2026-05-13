@@ -1,0 +1,429 @@
+/* Kontakt, kalender, footer (priser ligger under /side/meny med priser.png) */
+
+.contact-faq {
+  margin-top: 1.75rem;
+  padding: 1.35rem 1.25rem 1.5rem;
+  background: rgba(255, 255, 255, 0.55);
+  border-top: 1px solid rgba(45, 74, 111, 0.1);
+}
+
+.contact-faq__title {
+  margin: 0 0 1rem;
+  font-size: 1.15rem;
+  color: var(--deep-blue);
+}
+
+.contact-faq__list {
+  margin: 0;
+}
+
+.contact-faq__item {
+  margin: 0 0 1rem;
+}
+
+.contact-faq__item:last-child {
+  margin-bottom: 0;
+}
+
+.contact-faq__item dt {
+  margin: 0 0 0.25rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.contact-faq__item dd {
+  margin: 0;
+  padding: 0 0 0 0.25rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+.section--contact .contact-faq {
+  margin-top: 0;
+  padding: 1.75rem 1.35rem 1.5rem;
+  border-radius: 0;
+  background: var(--bolt-contact-privacy);
+  border-top: none;
+}
+
+.section--contact .contact-faq__title {
+  color: var(--ink-blood);
+}
+
+.section--contact .contact-faq__item dt {
+  color: var(--ink-blood);
+}
+
+.section--contact .contact-faq__item dd {
+  color: #000;
+}
+
+.contact-privacy {
+  margin-top: 2rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid rgba(45, 74, 111, 0.15);
+}
+
+.contact-privacy h3 {
+  margin: 0 0 0.65rem;
+  font-size: 1.2rem;
+  color: var(--deep-blue);
+}
+
+/* Kontakt — to fargefelt (uten ekstra «hvit kasse»-shading) */
+.section--contact .section__inner--contact {
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.section--contact .contact-hero {
+  background: var(--bolt-contact-top);
+  padding: 1.75rem 1.35rem 1.6rem;
+  border-radius: 16px 16px 0 0;
+}
+
+.section--contact .contact-hero .panel-title {
+  color: var(--ink-blood);
+}
+
+.section--contact .contact-hero p {
+  color: #000;
+}
+
+.section--contact .contact-hero a {
+  color: #000;
+  text-underline-offset: 2px;
+}
+
+.section--contact .contact-privacy {
+  margin-top: 0;
+  padding: 1.75rem 1.35rem;
+  border-top: none;
+  border-radius: 0 0 16px 16px;
+  background: var(--bolt-contact-privacy);
+  scroll-margin-top: 4.75rem;
+}
+
+.section--contact .contact-privacy h3 {
+  color: var(--ink-blood);
+}
+
+.section--contact .contact-privacy p {
+  color: #000;
+}
+
+.section--contact .contact-privacy .muted {
+  color: #000;
+}
+
+.muted {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.calendar {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1rem 1rem 1.25rem;
+  border: 1px solid rgba(45, 74, 111, 0.1);
+  box-shadow: 0 8px 24px rgba(26, 21, 40, 0.05);
+}
+
+.calendar__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.calendar__title {
+  margin: 0;
+  font-size: 1.1rem;
+  text-transform: capitalize;
+}
+
+.calendar__btn {
+  border: none;
+  background: var(--frost);
+  color: var(--deep-blue);
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.calendar__weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 4px;
+  font-size: 0.75rem;
+  color: #666;
+  text-align: center;
+}
+
+.calendar__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.calendar__cell {
+  min-height: 2.25rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  background: #f3f3f3;
+}
+
+.calendar__cell--empty {
+  background: transparent;
+}
+
+.calendar__cell--neutral {
+  background: #eef2f6;
+}
+
+.calendar__cell--open {
+  background: #c8ead4;
+  font-weight: 600;
+}
+
+.calendar__cell--closed {
+  background: #f0d4d4;
+}
+
+.calendar__cell--special {
+  background: #ffe9c7;
+}
+
+.calendar__legend {
+  list-style: none;
+  padding: 0.75rem 0 0;
+  margin: 0.75rem 0 0;
+  font-size: 0.85rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.calendar__legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.calendar__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.calendar__dot--open {
+  background: #2f9e5f;
+}
+
+.calendar__dot--closed {
+  background: #c94c4c;
+}
+
+.calendar__dot--special {
+  background: #e8a435;
+}
+
+.calendar__hint {
+  font-size: 0.85rem;
+  color: #444;
+  margin: 0.75rem 0 0;
+}
+
+.order-form {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.order-form__field {
+  display: grid;
+  gap: 0.35rem;
+  font-weight: 600;
+}
+
+abbr.order-form__required {
+  margin-left: 0.12em;
+  color: #b42318;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: help;
+  border-bottom: none;
+}
+
+.order-form__field input,
+.order-form__field select,
+.order-form__field textarea {
+  font: inherit;
+  padding: 0.55rem 0.65rem;
+  border-radius: 10px;
+  border: 1px solid rgba(26, 21, 40, 0.2);
+}
+
+.order-form__submit {
+  margin-top: 0.25rem;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  border: none;
+  background: var(--deep-blue);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.order-form__submit:hover:not(:disabled) {
+  filter: brightness(1.06);
+}
+
+.order-form__submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.order-form__dev-api-hint {
+  margin: 0 0 1rem;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--bolt-brown);
+  background: rgba(226, 209, 156, 0.35);
+  border-radius: 6px;
+  border: 1px dashed var(--bolt-tan);
+}
+
+.order-form__note {
+  font-size: 0.85rem;
+  color: #555;
+  margin: 0;
+}
+
+.order-form__note--disabled {
+  padding: 0.75rem 1rem;
+  margin: 0 0 1rem;
+  border-radius: 10px;
+  background: rgba(45, 74, 111, 0.06);
+  border: 1px solid rgba(45, 74, 111, 0.12);
+}
+
+.order-form__note--disabled > p {
+  margin: 0 0 0.35rem;
+}
+
+.order-form__note--disabled .order-form__dev-api-hint {
+  margin: 0.75rem 0 0;
+}
+
+.order-form__phone-fallback {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.order-form__phone-fallback a {
+  color: var(--deep-blue);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.order-form__hint {
+  font-size: 0.9rem;
+  color: var(--warm);
+}
+
+.order-form__success {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  background: rgba(76, 130, 96, 0.14);
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.order-form__error {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  background: rgba(160, 68, 68, 0.1);
+  color: #5c2222;
+  font-size: 0.9rem;
+}
+
+.footer {
+  margin-top: auto;
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #555;
+  border-top: 1px solid rgba(45, 74, 111, 0.1);
+  background: rgba(250, 246, 240, 0.72);
+  backdrop-filter: blur(6px);
+}
+
+/* Lenker: egen kontrast (unngår globale «lys blå»-lenker på halvlys footer) */
+.footer a {
+  color: #1a2840;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(26, 40, 64, 0.35);
+  text-underline-offset: 0.18em;
+}
+
+.footer a:hover {
+  color: var(--ink);
+  text-decoration-color: rgba(26, 21, 40, 0.55);
+}
+
+.footer a:visited {
+  color: #1f3050;
+}
+
+.footer__meta {
+  margin: 0.5rem 0 0;
+  font-size: 0.82rem;
+  color: #777;
+}
+
+.footer__credit {
+  margin: 0.45rem 0 0;
+  font-size: 0.82rem;
+  color: #777;
+  letter-spacing: 0.01em;
+}
+
+.footer__share {
+  margin: 0.65rem 0 0;
+}
+
+.share-oslolatte-btn {
+  font-size: 0.92rem;
+  padding: 0.5rem 1.1rem;
+}
+
+@media (max-width: 720px) {
+  .nav {
+    justify-content: flex-end;
+  }
+
+  .topbar {
+    flex-wrap: wrap;
+  }
+}

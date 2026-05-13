@@ -1,12 +1,13 @@
-import { Link, NavLink, Outlet } from 'react-router-dom';
+import { Suspense } from 'react';
+import { Link, Outlet } from 'react-router-dom';
 import { LanguageToggle } from '../components/LanguageToggle';
-import { flagOpenNowOverride } from '../data/opening';
-import { useLanguage } from '../i18n/LanguageContext';
+import { ThemeToggle } from '../components/ThemeToggle';
+import { FooterCredit } from '../components/FooterCredit';
+import { SiteLastUpdated } from '../components/SiteLastUpdated';
+import { SiteNav } from '../components/SiteNav';
+import { flagOpenNowOverride, preLaunch } from '../data/opening';
+import { useLanguage } from '../i18n/useLanguage';
 import '../App.css';
-
-function navClass({ isActive }: { isActive: boolean }) {
-  return isActive ? 'nav__link nav__link--active' : 'nav__link';
-}
 
 export default function SideLayout() {
   const { t } = useLanguage();
@@ -18,7 +19,7 @@ export default function SideLayout() {
         {t('skip.side')}
       </a>
       <header className="topbar">
-        <Link to="/" className="topbar__brand">
+        <Link to="/" className="topbar__brand" viewTransition>
           <img
             src="/Images/Logo1.jpeg"
             alt=""
@@ -30,44 +31,51 @@ export default function SideLayout() {
           <span>OsloLatte</span>
         </Link>
         <div className="topbar__nav-wrap">
-          <nav className="nav nav--tabs" aria-label={t('side.navAria')}>
-            <NavLink to="/side/om-oss" className={navClass} end>
-              {t('side.omOss')}
-            </NavLink>
-            <NavLink to="/side/meny" className={navClass}>
-              {t('side.meny')}
-            </NavLink>
-            <NavLink to="/side/kalender" className={navClass}>
-              {t('side.kalender')}
-            </NavLink>
-            <NavLink to="/side/bestill" className={navClass}>
-              {t('side.bestill')}
-            </NavLink>
-            <NavLink to="/side/kontakt" className={navClass}>
-              {t('side.kontakt')}
-            </NavLink>
-          </nav>
+          <SiteNav ariaLabel={t('side.navAria')} />
+          <ThemeToggle />
           <LanguageToggle />
         </div>
       </header>
 
-      {flagOpenNowOverride && (
+      {flagOpenNowOverride ? (
         <div className="banner banner--open" role="status">
           <strong>{t('common.bannerStrong')}</strong> {t('common.bannerRest')}
         </div>
+      ) : (
+        preLaunch && (
+          <div className="banner banner--prelaunch" role="status">
+            {t('home.preLaunchBanner')}
+          </div>
+        )
       )}
 
       <main id="main-content" className="main--single-panel">
-        <Outlet />
+        <Suspense
+          fallback={
+            <div className="section section--panel" role="status" aria-live="polite">
+              <div className="section__inner">
+                <p className="muted">{t('side.panelLoading')}</p>
+              </div>
+            </div>
+          }
+        >
+          <Outlet />
+        </Suspense>
       </main>
 
       <footer className="footer">
         <p>
           {t('side.footerTag', { year })}
-          <Link to="/side/kontakt">{t('side.footerContact')}</Link>
+          <Link to="/side/kontakt" viewTransition>
+            {t('side.footerContact')}
+          </Link>
           {' · '}
-          <Link to="/">{t('side.footerHomeOrder')}</Link>
+          <Link to="/" viewTransition>
+            {t('side.footerHomeOrder')}
+          </Link>
         </p>
+        <SiteLastUpdated />
+        <FooterCredit />
       </footer>
     </div>
   );

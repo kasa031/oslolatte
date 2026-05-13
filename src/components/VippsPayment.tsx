@@ -1,9 +1,5 @@
-import {
-  VIPPS_ENABLED,
-  VIPPS_PAYMENT_LINK,
-  VIPPS_RECIPIENT_MOBILE,
-} from '../config/vipps';
-import { useLanguage } from '../i18n/LanguageContext';
+import { VIPPS_ENABLED, VIPPS_PAYMENT_LINK, VIPPS_RECIPIENT_MOBILE } from '../config/vipps';
+import { useLanguage } from '../i18n/useLanguage';
 
 function formatMobileDisplay(digits: string) {
   const d = digits.replace(/\D/g, '');
@@ -23,11 +19,7 @@ export function VippsPayment() {
 
   if (!hasLink && !hasMobile) {
     if (import.meta.env.DEV) {
-      return (
-        <p className="muted vipps-panel__devhint">
-          {t('vipps.devHint')}
-        </p>
-      );
+      return <p className="muted vipps-panel__devhint">{t('vipps.devHint')}</p>;
     }
     return null;
   }

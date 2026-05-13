@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Interne notater og maler — ikke for søkemotorer
+Disallow: /intern/
+
+# Kanonisk vert — pek hit når DNS for oslolatte.no går til Netlify (sitemap genereres ved build når VITE_SITE_URL er satt)
+Sitemap: https://oslolatte.no/sitemap.xml

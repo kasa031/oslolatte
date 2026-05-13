@@ -1,54 +1,24 @@
-import { useCallback, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { OpeningCalendar } from '../components/OpeningCalendar';
-import { OrderForm } from '../components/OrderForm';
-import { OrderQrAside } from '../components/OrderQrAside';
+import { useCallback, useLayoutEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { MenuLiquidHero } from '../components/MenuLiquidHero';
 import { OsloLatteLogo } from '../components/OsloLatteLogo';
-import { VippsPayment } from '../components/VippsPayment';
-import {
-  CONTACT_EMAIL,
-  CONTACT_PHONE_DISPLAY,
-  CONTACT_PHONE_TEL,
-  CONTACT_WHATSAPP_WA_ME,
-} from '../config/contact';
-import { useLanguage } from '../i18n/LanguageContext';
-
-export function OmOssPanel() {
-  const { t } = useLanguage();
-
-  return (
-    <section className="section section--story section--panel panel--bolt-omoss">
-      <div className="section__inner">
-        <h1 className="panel-title">{t('panels.omOss.title')}</h1>
-        <h2 className="panel-subtitle">{t('panels.omOss.subtitle')}</h2>
-        <p>{t('panels.omOss.p1')}</p>
-        <p>{t('panels.omOss.p2')}</p>
-        <figure className="omoss-gate">
-          <img
-            src="/Images/thereses-gate.png"
-            alt={t('panels.omOss.gateAlt')}
-            loading="lazy"
-            decoding="async"
-          />
-          <figcaption>{t('panels.omOss.gateCaption')}</figcaption>
-        </figure>
-        <p className="omoss-dedication">{t('panels.omOss.p3')}</p>
-        <p className="muted panel-tip">
-          {t('panels.omOss.tipBefore')}
-          <Link to="/">{t('panels.omOss.tipHome')}</Link>
-          {t('panels.omOss.tipMid')}
-          <Link to="/side/bestill">{t('panels.omOss.tipOrder')}</Link>
-          {t('panels.omOss.tipEnd')}
-        </p>
-      </div>
-    </section>
-  );
-}
+import { useLanguage } from '../i18n/useLanguage';
 
 export function MenyPanel() {
   const { t } = useLanguage();
+  const { pathname, hash } = useLocation();
   const [showSummer, setShowSummer] = useState(false);
+
+  useLayoutEffect(() => {
+    if (pathname !== '/side/meny' || hash !== '#priser') return;
+    const el = document.getElementById('priser');
+    if (!el) return;
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  }, [pathname, hash]);
 
   const toggleMenuFace = useCallback(() => {
     setShowSummer((v) => !v);
@@ -59,7 +29,10 @@ export function MenyPanel() {
       <div className="section__inner">
         <header className="menu-masthead" aria-labelledby="menu-main-heading">
           <div className="menu-masthead__crest">
-            <OsloLatteLogo ariaLabel={t('panels.meny.logoAlt')} ribbon={t('panels.meny.logoRibbon')} />
+            <OsloLatteLogo
+              ariaLabel={t('panels.meny.logoAlt')}
+              ribbon={t('panels.meny.logoRibbon')}
+            />
           </div>
           <p className="menu-masthead__eyebrow">{t('panels.meny.mastheadEyebrow')}</p>
           <p className="menu-masthead__tagline">{t('panels.meny.mastheadTagline')}</p>
@@ -84,7 +57,9 @@ export function MenyPanel() {
           <button
             type="button"
             className="menu-flip-scene"
-            aria-label={showSummer ? t('panels.meny.flipAriaSummer') : t('panels.meny.flipAriaWinter')}
+            aria-label={
+              showSummer ? t('panels.meny.flipAriaSummer') : t('panels.meny.flipAriaWinter')
+            }
             aria-pressed={showSummer}
             onClick={toggleMenuFace}
           >
@@ -96,23 +71,27 @@ export function MenyPanel() {
                     <h4 className="menu-product__name">{t('panels.meny.latteWinterName')}</h4>
                     <p className="menu-product__badge">{t('panels.meny.latteWinterBadge')}</p>
                     <p className="menu-product__desc">{t('panels.meny.latteWinterDesc')}</p>
-                    <p className="menu-product__compose-label">{t('panels.meny.latteWinterComposeLabel')}</p>
+                    <p className="menu-product__compose-label">
+                      {t('panels.meny.latteWinterComposeLabel')}
+                    </p>
                     <p className="menu-product__compose">{t('panels.meny.latteWinterCompose')}</p>
                   </div>
                   <div className="menu-product menu-product--kakao">
                     <h4 className="menu-product__name">{t('panels.meny.kakaoWinterName')}</h4>
                     <p className="menu-product__badge">{t('panels.meny.kakaoWinterBadge')}</p>
                     <p className="menu-product__desc">{t('panels.meny.kakaoWinterDesc')}</p>
-                    <p className="menu-product__compose-label">{t('panels.meny.kakaoWinterComposeLabel')}</p>
+                    <p className="menu-product__compose-label">
+                      {t('panels.meny.kakaoWinterComposeLabel')}
+                    </p>
                     <p className="menu-product__compose">{t('panels.meny.kakaoWinterCompose')}</p>
                   </div>
                 </div>
                 <figure className="menu-card__fig">
                   <img
-                    src="/Images/Meny_winter.jpeg"
+                    src="/Images/Meny_winter_kort.jpeg"
                     alt={t('panels.meny.imgWinterAlt')}
-                    width={800}
-                    height={600}
+                    width={979}
+                    height={1024}
                     loading="lazy"
                     decoding="async"
                   />
@@ -127,14 +106,18 @@ export function MenyPanel() {
                     <h4 className="menu-product__name">{t('panels.meny.latteSummerName')}</h4>
                     <p className="menu-product__badge">{t('panels.meny.latteSummerBadge')}</p>
                     <p className="menu-product__desc">{t('panels.meny.latteSummerDesc')}</p>
-                    <p className="menu-product__compose-label">{t('panels.meny.latteSummerComposeLabel')}</p>
+                    <p className="menu-product__compose-label">
+                      {t('panels.meny.latteSummerComposeLabel')}
+                    </p>
                     <p className="menu-product__compose">{t('panels.meny.latteSummerCompose')}</p>
                   </div>
                   <div className="menu-product menu-product--kakao">
                     <h4 className="menu-product__name">{t('panels.meny.kakaoSummerName')}</h4>
                     <p className="menu-product__badge">{t('panels.meny.kakaoSummerBadge')}</p>
                     <p className="menu-product__desc">{t('panels.meny.kakaoSummerDesc')}</p>
-                    <p className="menu-product__compose-label">{t('panels.meny.kakaoSummerComposeLabel')}</p>
+                    <p className="menu-product__compose-label">
+                      {t('panels.meny.kakaoSummerComposeLabel')}
+                    </p>
                     <p className="menu-product__compose">{t('panels.meny.kakaoSummerCompose')}</p>
                   </div>
                 </div>
@@ -167,86 +150,20 @@ export function MenyPanel() {
           <p className="menu-allergy__action">{t('panels.meny.allergyAction')}</p>
           <p className="muted menu-allergy__fineprint">{t('panels.meny.allergyP2')}</p>
         </div>
-      </div>
-    </section>
-  );
-}
 
-export function KalenderPanel() {
-  const { t } = useLanguage();
-
-  return (
-    <section className="section section--hours section--panel panel--bolt-kalender">
-      <div className="section__inner section__inner--split">
-        <div>
-          <h1 className="panel-title">{t('panels.kalender.title')}</h1>
-          <p>{t('panels.kalender.p1')}</p>
-          <p className="muted">
-            {t('panels.kalender.p2Before')}
-            <strong>{t('panels.kalender.p2Street')}</strong>
-            {t('panels.kalender.p2After')}
-          </p>
-        </div>
-        <OpeningCalendar />
-      </div>
-    </section>
-  );
-}
-
-export function BestillPanel() {
-  const { t } = useLanguage();
-
-  return (
-    <section className="section section--order section--panel">
-      <div className="section__inner section__inner--order-wide">
-        <h1 className="panel-title">{t('panels.bestill.title')}</h1>
-        <p>{t('panels.bestill.p1')}</p>
-        <p className="muted">
-          {t('panels.bestill.tip')}
-          <Link to="/">{t('panels.bestill.tipHome')}</Link>
-          {t('panels.bestill.tipEnd')}
-        </p>
-        <div className="order-split">
-          <div className="order-split__form">
-            <OrderForm />
-          </div>
-          <OrderQrAside />
-        </div>
-        <VippsPayment />
-      </div>
-    </section>
-  );
-}
-
-export function KontaktPanel() {
-  const { t } = useLanguage();
-
-  return (
-    <section className="section section--contact section--panel">
-      <div className="section__inner section__inner--contact">
-        <div className="contact-hero">
-          <h1 className="panel-title">{t('panels.kontakt.title')}</h1>
-          <p>{t('panels.kontakt.intro')}</p>
-          <p>
-            <strong>{t('panels.kontakt.email')}</strong>{' '}
-            <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
-            <br />
-            <strong>{t('panels.kontakt.phone')}</strong>{' '}
-            <a href={`tel:${CONTACT_PHONE_TEL}`}>{CONTACT_PHONE_DISPLAY}</a>
-            {CONTACT_WHATSAPP_WA_ME ? (
-              <>
-                <br />
-                <strong>{t('panels.kontakt.whatsapp')}</strong>{' '}
-                <a href={`https://wa.me/${CONTACT_WHATSAPP_WA_ME}`}>{t('panels.kontakt.whatsappChat')}</a>
-              </>
-            ) : null}
-          </p>
-        </div>
-        <div className="contact-privacy" id="personvern">
-          <h3>{t('panels.kontakt.privacyH3')}</h3>
-          <p>{t('panels.kontakt.privacyP1')}</p>
-          <p className="muted">{t('panels.kontakt.privacyP2')}</p>
-          <p className="muted">{t('panels.kontakt.privacyCookies')}</p>
+        <div className="menu-prices" id="priser">
+          <h2 className="menu-prices__title">{t('panels.priser.title')}</h2>
+          <p className="section__intro menu-prices__intro">{t('panels.priser.intro')}</p>
+          <figure className="menu-prices__fig">
+            <img
+              src="/Images/priser.png"
+              alt={t('panels.priser.imgAlt')}
+              width={1187}
+              height={1040}
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
         </div>
       </div>
     </section>

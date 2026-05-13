@@ -16,6 +16,8 @@
   --bolt-pine: #2e5339;
   --bolt-mustard: #e3b448;
   --bolt-sand: #f2d091;
+  /* Glød / aksent (brukt i fokus-outline m.m.) */
+  --bolt-caramel: #c9a227;
   --bolt-mist: #c5d3e0;
   /* Om oss-boks: kjølig grå-stein (erstatter varm beige i panelet) */
   --bolt-omoss-surface: #d8dad3;
@@ -38,6 +40,7 @@
   /* Bestilling (forside + /side/bestill): varm panelbakgrunn */
   --bolt-bestill-panel: #f5eae6;
   --bolt-bestill-accent: #e1d19c;
+  font-optical-sizing: auto;
   font-family: 'Georgia', 'Times New Roman', serif;
   color: var(--ink);
   line-height: 1.6;
@@ -59,7 +62,8 @@ body {
   min-height: 100vh;
   background-color: var(--cream);
   /* Svak overlay slik at lyse linjer i tapetet faktisk synes */
-  background-image: linear-gradient(
+  background-image:
+    linear-gradient(
       rgba(250, 246, 240, 0.34) 0%,
       rgba(250, 246, 240, 0.4) 45%,
       rgba(232, 241, 251, 0.36) 100%

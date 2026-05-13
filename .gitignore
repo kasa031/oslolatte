@@ -6,6 +6,13 @@ dist
 .env.*
 !.env.example
 
+# Unødvendige JS-duplikater av TypeScript-konfig (ikke legg til ved uhell)
+/vite.config.js
+/src/config/norwegianOrgNumber.js
+
+# Netlify CLI (lokal dev / state — ikke i repo)
+.netlify/
+
 # Nedlasting/søppel fra ekstern nettside — ikke del av appen (stor mappe)
 Images/The Oslo Toile _ tapet_files/
 Images/The Oslo Toile _ tapet.html
@@ -15,3 +22,14 @@ Images/The Oslo Toile _ tapet.png
 /test-results/
 /playwright-report/
 /playwright/.cache/
+
+# Lighthouse CI (lokale rapporter/cache)
+.lighthouseci/
+
+# WebP fra gen:slides (sharp) — gjenskapes ved `npm run dev` / `npm run build` (prebuild)
+public/Images/theresesgate/*.webp
+
+# Intern dokumentasjon (todo, runbook, sjekklister) — ikke i public GitHub-repo.
+# Se docs/intern-lokalt.md. Netlify-bygg fra Git får da ikke /intern/ med (med mindre du legger inn egen privat kilde).
+/public/intern/
+/intern/

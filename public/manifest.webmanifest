@@ -1,0 +1,42 @@
+{
+  "name": "OsloLatte",
+  "short_name": "OsloLatte",
+  "description": "OsloLatte og OsloKakao — signaturdrikk fra Thereses gate. Bestill hos oss.",
+  "lang": "nb",
+  "dir": "ltr",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#faf6f0",
+  "theme_color": "#000000",
+  "categories": ["food", "shopping"],
+  "icons": [
+    {
+      "src": "/Images/Logo1.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "/Images/Logo1.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Bestill",
+      "short_name": "Bestill",
+      "description": "Gå rett til bestilling",
+      "url": "/side/bestill",
+      "icons": [{ "src": "/Images/Logo1.jpeg", "sizes": "512x512", "type": "image/jpeg" }]
+    },
+    {
+      "name": "Kontakt",
+      "short_name": "Kontakt",
+      "description": "Kontakt OsloLatte",
+      "url": "/side/kontakt",
+      "icons": [{ "src": "/Images/Logo1.jpeg", "sizes": "512x512", "type": "image/jpeg" }]
+    }
+  ]
+}
