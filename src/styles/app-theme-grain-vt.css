@@ -450,10 +450,7 @@ html[data-theme='dark'] .vipps-panel .muted {
   color: rgba(236, 228, 218, 0.88);
 }
 
-/* 404 */
-html[data-theme='dark'] .not-found-main__lead {
-  color: rgba(236, 230, 220, 0.86);
-}
+/* 404: lys kortflate — mørk tekst settes i app-not-found.css (ikke lys --ink her) */
 
 /* Feilgrense */
 html[data-theme='dark'] .error-boundary {

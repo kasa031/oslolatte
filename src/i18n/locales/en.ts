@@ -192,7 +192,7 @@ export const en: Dict = {
       privacyP2:
         'We don’t use the information for anything else. To see what we’ve stored, or to ask us to delete your details, use the same email or phone as above.',
       privacyCookies:
-        'Cookies: we don’t use analytics or marketing cookies on this site — including Google Analytics or similar tracking. Fonts are served from this site (no Google Fonts request). Your language choice (NO/ENG) is stored only in your browser so it’s remembered next time — no profiling.',
+        'Cookies: we don’t use analytics or marketing cookies on this site — including Google Analytics or similar tracking. Your language choice (NO/ENG) is stored only in your browser so it’s remembered next time — no profiling.',
       faqTitle: 'Quick answers (FAQ)',
       faq1q: 'Allergies and safe service?',
       faq1a:

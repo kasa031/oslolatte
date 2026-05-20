@@ -2,7 +2,7 @@
  * Minimal service worker: cache kun hashede byggfiler under /assets/.
  * API (/api/*), navigasjon og HTML caches ikke — unngår feil SPA-/bestillings-cache.
  */
-const CACHE = 'oslolatte-assets-v0.1.0-0a8a26c';
+const CACHE = 'oslolatte-assets-v0.1.0-8dc1576';
 function isAssetGet(request) {
   if (request.method !== 'GET') return false;
   const url = new URL(request.url);

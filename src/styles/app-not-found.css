@@ -16,6 +16,11 @@
 .not-found-main__inner {
   max-width: 32rem;
   text-align: center;
+  /* Lys «glass»-flate — tekst må være mørk i både lys og mørk nettlesertema */
+  --nf-ink: #14121a;
+  --nf-ink-muted: #3a3540;
+  --nf-ink-code: #3d4f6b;
+  --nf-link: #1a3a5c;
 }
 
 .not-found-main__code {
@@ -23,7 +28,7 @@
   font-family: var(--font-display, 'Fraunces Variable', Georgia, serif);
   font-size: clamp(2.5rem, 8vw, 3.5rem);
   font-weight: 700;
-  color: rgba(45, 74, 111, 0.35);
+  color: var(--nf-ink-code);
   letter-spacing: 0.04em;
 }
 
@@ -31,12 +36,12 @@
   margin: 0 0 0.75rem;
   font-size: clamp(1.35rem, 4vw, 1.65rem);
   font-weight: 700;
-  color: var(--ink, #1a1a1a);
+  color: var(--nf-ink);
 }
 
 .not-found-main__lead {
   margin: 0 0 1.25rem;
-  color: #444;
+  color: var(--nf-ink-muted);
   line-height: 1.55;
 }
 
@@ -46,7 +51,7 @@
 }
 
 .not-found-main__links a {
-  color: var(--deep-blue, #2d4a6f);
+  color: var(--nf-link);
   font-weight: 600;
   text-underline-offset: 3px;
 }
@@ -56,11 +61,29 @@
   padding-bottom: 2rem;
 }
 
+.section--not-found-panel .section__inner {
+  --nf-ink: #14121a;
+  --nf-ink-muted: #3a3540;
+  --nf-ink-code: #3d4f6b;
+  --nf-link: #1a3a5c;
+}
+
+.section--not-found-panel .panel-title {
+  color: var(--nf-ink);
+}
+
+.section--not-found-panel
+  .section__inner
+  > p:not(.not-found-panel__code):not(.not-found-panel__links) {
+  color: var(--nf-ink-muted);
+  line-height: 1.55;
+}
+
 .not-found-panel__code {
   margin: 0 0 0.25rem;
   font-size: 2rem;
   font-weight: 700;
-  color: rgba(45, 74, 111, 0.35);
+  color: var(--nf-ink-code);
 }
 
 .not-found-panel__links {
@@ -68,7 +91,7 @@
 }
 
 .not-found-panel__links a {
-  color: var(--deep-blue, #2d4a6f);
+  color: var(--nf-link);
   font-weight: 600;
   text-underline-offset: 3px;
 }

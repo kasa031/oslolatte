@@ -189,7 +189,7 @@ export const nb: Dict = {
       privacyP2:
         'Vi bruker ikke informasjonen til annet enn dette. Vil du vite hva vi har lagret, eller vil du at vi sletter opplysningene, tar du kontakt på samme e-post eller telefon som over.',
       privacyCookies:
-        'Informasjonskapsler: vi bruker ikke analyseverktøy eller markedsføringscookies på denne siden — heller ikke Google Analytics eller annen «tracking». Skrifter lastes fra egen nettside (ingen Google Fonts-forespørsel). Språkvalg (NO/ENG) lagres kun lokalt i nettleseren din slik at valget huskes neste gang — ingen personlig profilering.',
+        'Informasjonskapsler: vi bruker ikke analyseverktøy eller markedsføringscookies på denne siden — heller ikke Google Analytics eller annen «tracking». Språkvalg (NO/ENG) lagres kun lokalt i nettleseren din slik at valget huskes neste gang — ingen personlig profilering.',
       faqTitle: 'Korte svar (FAQ)',
       faq1q: 'Allergier og «trygg servering»?',
       faq1a:
