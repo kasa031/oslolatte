@@ -1,6 +1,6 @@
 # OsloLatte
 
-Offentlig nettside for **OsloLatte** (signaturkaffe og kakao) — drevet av **KoppStopp**.  
+Offentlig nettside for **OsloLatte** (signaturkaffe og kakao) — drevet av **Koppestopp**.  
 Produksjonsstack: React 19, TypeScript, Vite 6, Netlify (statisk hosting + serverless functions).
 
 **Repository:** [github.com/kasa031/oslolatte](https://github.com/kasa031/oslolatte)  
