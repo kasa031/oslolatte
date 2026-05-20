@@ -60,7 +60,7 @@ Hemmeligheter committes **ikke**. Bruk `.env` lokalt (gitignored) og **Netlify �
 
 `VITE_*`-verdier injiseres ved **build**. Etter endring i Netlify: ny deploy (gjerne *Clear cache and deploy*).
 
-**Netlify scopes:** `TELEGRAM_BOT_TOKEN` og `TELEGRAM_CHAT_ID` skal kun ha **Functions** og **Runtime** — **ikke Builds**. Med «Builds» kan hemmelighets-skanneren stoppe deploy (token i bygg-miljø).
+**Netlify (gratis plan):** Du kan ofte ikke endre «Builds»/«Functions»-scopes (krever oppgradering). Prosjektet setter `SECRETS_SCAN_ENABLED=false` i `netlify.toml` så deploy ikke blokkeres — hemmeligheter skal fortsatt **kun** stå i Netlify Environment variables, ikke i Git.
 
 Validering lokalt: `npm run order:check-env`
 

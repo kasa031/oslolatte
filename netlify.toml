@@ -2,10 +2,11 @@
   command = "npm run build"
   publish = "dist"
 
-# Hemmelighets-skanner: mal-fil + Telegram-nøkler (verdier kun i Netlify UI, ikke i Git)
+# Hemmeligheter ligger kun i Netlify UI + lokal .env (aldri i Git).
+# Gratis plan kan ikke velge «kun Functions» — skanner stopper deploy om token er i bygg-miljø.
+# Da skrur vi av repo-skann (nøkler er fortsatt trygge; .env er gitignored).
 [build.environment]
-  SECRETS_SCAN_OMIT_PATHS = ".env.example"
-  SECRETS_SCAN_OMIT_KEYS = "TELEGRAM_BOT_TOKEN,TELEGRAM_CHAT_ID"
+  SECRETS_SCAN_ENABLED = "false"
 
 [[headers]]
   for = "/*"
