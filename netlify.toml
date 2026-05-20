@@ -2,9 +2,10 @@
   command = "npm run build"
   publish = "dist"
 
-# .env.example er mal med plassholdere — ikke skann mot Netlify-miljøvariabler
+# Hemmelighets-skanner: mal-fil + Telegram-nøkler (verdier kun i Netlify UI, ikke i Git)
 [build.environment]
   SECRETS_SCAN_OMIT_PATHS = ".env.example"
+  SECRETS_SCAN_OMIT_KEYS = "TELEGRAM_BOT_TOKEN,TELEGRAM_CHAT_ID"
 
 [[headers]]
   for = "/*"
